@@ -1,6 +1,4 @@
-# from fastapi import APIRouter, HTTPException
-# from app.schemas.user import UserLogin, Token
-# from app.core.security import create_access_token
+
 
 # router = APIRouter()
 
@@ -26,8 +24,9 @@
 
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from app.schemas.user import UserLogin
-from app.services.auth_service import authenticate_user
+
+from app.schemas.user import UserCreate, UserLogin, UserResponse
+from app.services.auth_service import register_user, authenticate_user
 from app.db.session import SessionLocal
 
 router = APIRouter()
@@ -52,5 +51,23 @@ def login(user: UserLogin, db: Session = Depends(get_db)):
 
     return {
         "access_token": token,
-        "token_type": "bearer"
+        "token_type": "bearer",
+        "valie user":True
+    }
+
+
+@router.post("/register", response_model=UserResponse)
+def register(user: UserCreate, db: Session = Depends(get_db)):
+
+    new_user = register_user(db, user.email, user.password)
+
+    if not new_user:
+        raise HTTPException(status_code=400, detail="User already exists")
+
+    # return new_user
+
+    return {
+        "id": new_user.id,
+        "email": new_user.email,
+        "message": "Registration done successfully"
     }
