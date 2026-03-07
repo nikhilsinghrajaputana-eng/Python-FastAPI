@@ -39,4 +39,30 @@ fastapi-backend/
 │        └── auth_service.py
 │
 ├── requirements.txt
-└── .env 
+└── .env
+
+
+
+# Main libraries 
+FastAPI
+
+Uvicorn
+
+SQLAlchemy
+
+python-jose
+pip install sqlalchemy psycopg2-binary alembic
+
+
+python -m uvicorn app.main:app --reload
+
+
+
+
+INSERT INTO users (email, hashed_password)
+VALUES (
+'admin@test.com',
+'$2b$12$ZJaOHea2qInbekbZ0E5YIeP7jD31GWQ8uDV/5/3zrAeCSUX/exqIC'
+);
+
+ram123@
