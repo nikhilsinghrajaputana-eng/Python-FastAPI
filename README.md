@@ -5,7 +5,7 @@ Full working version of fast API
 Install requrments 
  pip install fastapi uvicorn python-jose passlib[bcrypt] python-multipart sqlalchemy python-dotenv
 
-
+<pre >
 
 fastapi-backend/
 │
@@ -41,7 +41,7 @@ fastapi-backend/
 ├── requirements.txt
 └── .env
 
-
+</pre>
 
 # Main libraries 
 FastAPI
