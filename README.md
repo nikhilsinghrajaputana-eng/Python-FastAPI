@@ -43,6 +43,8 @@ fastapi-backend/
 
 </pre>
 
+# Data Base :
+    PG Admin
 # Main libraries 
 FastAPI
 
