@@ -27,7 +27,7 @@ from sqlalchemy.orm import Session
 
 from app.schemas.user import UserCreate, UserLogin, UserResponse
 from app.services.auth_service import register_user, authenticate_user
-from app.db.session import SessionLocal
+from app.api.deps import get_db
 
 router = APIRouter()
 
