@@ -1,0 +1,60 @@
+# ECADS-v3 Scoring Weights — configurable per §51
+
+opportunity_weights:
+  fundamental_acceleration: 15
+  revenue_eps_growth: 10
+  earnings_quality: 8
+  margins_roce_roic: 8
+  cashflow_balance_sheet: 8
+  business_transformation: 8
+  order_book_inflow: 6
+  tender_procurement_catalyst: 5
+  management_credibility: 5
+  market_confirmation: 5
+  ownership_confirmation: 3
+  valuation_expectations_gap: 10
+  rerating_potential: 5
+  sector_opportunity: 4
+
+earliness_inputs:
+  fundamental_acceleration_weight: 0.20
+  earnings_surprise_weight: 0.15
+  estimate_revision_weight: 0.10
+  valuation_expansion_completed_weight: 0.15
+  price_appreciation_completed_weight: 0.15
+  institutional_ownership_weight: 0.10
+  analyst_coverage_weight: 0.05
+  market_awareness_weight: 0.05
+  catalyst_maturity_weight: 0.05
+
+earliness_stages:
+  EARLY: [70, 100]
+  MID_STAGE: [50, 69]
+  LATE_STAGE: [30, 49]
+  EXPECTATIONS_HEAVY: [15, 29]
+  ALREADY_DISCOVERED: [0, 14]
+
+cfcr_benchmarks:
+  # Sector-specific CFCR benchmarks — no universal 0.60 threshold (§17)
+  default:
+    warning_below: 0.50
+    strong_above: 0.80
+  banking:
+    warning_below: 0.30
+    strong_above: 0.60
+  it_services:
+    warning_below: 0.70
+    strong_above: 0.95
+  manufacturing:
+    warning_below: 0.45
+    strong_above: 0.75
+
+hard_risk_gates:
+  - qualified_audit
+  - major_accounting_anomaly
+  - extreme_promoter_encumbrance
+  - dangerous_leverage
+  - unexplained_cashflow_divergence
+  - severe_dilution
+  - regulatory_action
+  - material_litigation

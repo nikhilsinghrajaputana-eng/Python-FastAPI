@@ -1,0 +1,34 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: ecads-postgres
+    environment:
+      POSTGRES_USER: ecads
+      POSTGRES_PASSWORD: ecads
+      POSTGRES_DB: ecads
+    ports:
+      - "5432:5432"
+    volumes:
+      - ecads_pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ecads"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: ecads-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - ecads_redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  ecads_pg_data:
+  ecads_redis_data:

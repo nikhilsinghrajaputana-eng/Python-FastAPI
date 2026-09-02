@@ -1,0 +1,35 @@
+app:
+  name: ECADS-v3
+  version: "3.0.0"
+  timezone: Asia/Kolkata
+
+database:
+  url: postgresql://ecads:ecads@localhost:5432/ecads
+  pool_size: 10
+
+redis:
+  url: redis://localhost:6379/0
+
+batch:
+  feature_compute_time: "18:00"
+  scoring_time: "19:00"
+  timezone: Asia/Kolkata
+
+universe:
+  market_cap_bands:
+    microcap_max: 500        # INR Cr
+    smallcap_max: 5000
+    midcap_max: 20000
+    # above midcap_max = largecap
+
+  liquidity:
+    illiquid_adv_threshold: 10   # INR Lakhs daily value
+    high_liquidity_adv_threshold: 500
+
+pit:
+  enforce_strict: true
+  default_availability_col: information_available_at
+
+logging:
+  level: INFO
+  format: json
